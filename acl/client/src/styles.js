@@ -1,4 +1,4 @@
-import {markStyles} from '@material-ui/core';
+import {markStyles} from '@material-ui/core/styles';//fee 8alta kanet hena
 
 export default markStyles(()=> ({
     appBar:{
