@@ -3,7 +3,6 @@ import flight from "../models/flights.js";
 export const getFlights = async (req,res) => {
     try {
         const allFlights = await flight.find();//await is because the request takes time (same for async) 
-        
         res.status(200).json(allFlights);
     } catch (error) {
         res.status(404).json({message : error.message});
@@ -40,4 +39,9 @@ export const createUser = async (req,res) => {
     } catch (error) {
         res.status(409).json ({message : error.message});
     }
+}
+
+export const viewAllFlights =  async (req,res) => {
+    const addedFlight = req.body;
+   // const newflight = new flight(added flight);//
 }
