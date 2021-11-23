@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import {Container , AppBar , Typography , Grow , Grid} from '@material-ui/core';
 import './App.css';
 import { mergeClasses } from '@material-ui/styles';
-import FlightShow from '.components/showFlight/showFlight.js';//8alta hena bardo
-import FlightCreate from '.components/createFlight/createFlight.js';
-
+import FlightShow from './components/showFlight/showFlight.js';//8alta hena bardo
+import FlightCreate from './components/createFlight/createFlight.js';
+import useStyles from './styles.js';
 
 function App() {
+  const classes = useStyles();
   return (
     <div className="App">
       <Container maxWidth="lg">

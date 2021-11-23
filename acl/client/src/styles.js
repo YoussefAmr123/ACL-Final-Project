@@ -1,6 +1,6 @@
-import {markStyles} from '@material-ui/core/styles';//fee 8alta kanet hena
+import {makeStyles} from '@material-ui/core/styles';//fee 8alta kanet hena
 
-export default markStyles(()=> ({
+export default makeStyles(()=> ({
     appBar:{
         borderRadius : 15,
         margin : '30px 0',
