@@ -1,15 +1,13 @@
 import mongoose from 'mongoose';
 
 const FlightSchema = mongoose.Schema({
-    From : String,
-    To : String,
-    FlightDate : Date ,
-    Cabin : String ,
-    Seats : Number ,
-    section: {
-        type: String ,
-        default: 'A'
-    } 
+    flightNumber : Number, 
+    departureTime : Date,
+    arrivalTime : Date,
+    economySeats : Number ,
+    businessSeats : Number ,
+    airport : String ,
+    
 });
 
 const flight = mongoose.model('flight', FlightSchema);

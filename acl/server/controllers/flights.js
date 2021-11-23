@@ -19,3 +19,25 @@ export const createFlight = async (req,res) => {
         res.status(409).json ({message : error.message});
     }
 }
+import user from "../models/user.js";
+
+export const getUser = async (req,res) => {
+    try {
+        const allUsers = await user.find();//await is because the request takes time (same for async) 
+        
+        res.status(200).json(allUsers);
+    } catch (error) {
+        res.status(404).json({message : error.message});
+    }
+}
+
+export const createUser = async (req,res) => {
+    const addedUser = req.body;//get the new user details
+    const newUser = new user(addedUser);
+    try {
+       await newUser.save();
+       res.status(201).json(newUser);
+    } catch (error) {
+        res.status(409).json ({message : error.message});
+    }
+}
