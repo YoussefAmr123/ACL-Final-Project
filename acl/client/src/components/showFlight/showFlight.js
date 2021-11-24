@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState , useEffect , useStyles} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,20 +7,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
+export default function ShowFlight() {
+    const classes = useStyles();
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+    const [flightslist , setFlightList]= useState([])
 
-export default function BasicTable() {
+    useEffect(()=> {axios.get("http://localhost:5000/Flight").then( (allFlights) =>{
+        setFlightList(allFlights.data);
+    })
+
+}, [])
   return (
       <>
       <h2>All Flights</h2>
@@ -27,26 +26,29 @@ export default function BasicTable() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Flights</TableCell>
+            <TableCell align="right">Flight No</TableCell>
+            <TableCell align="right">Departure Time</TableCell>
+            <TableCell align="right">Arrival Time</TableCell>
+            <TableCell align="right">Economy Seats</TableCell>
+            <TableCell align="right">Business Seats</TableCell>
+            <TableCell align="right">Airport</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {flightslist.map((flights , key) => (
             <TableRow
-              key={row.name}
+              key={key}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {flights.flightNumber}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{flights.departureTime}</TableCell>
+              <TableCell align="right">{flights.arrivalTime}</TableCell>
+              <TableCell align="right">{flights.economySeats}</TableCell>
+              <TableCell align="right">{flights.businessSeats}</TableCell>
+              <TableCell align="right">{flights.airport}</TableCell>
             </TableRow>
           ))}
         </TableBody>
