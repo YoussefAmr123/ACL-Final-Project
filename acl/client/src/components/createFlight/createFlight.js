@@ -7,17 +7,19 @@ import axios from 'axios';
 
 export default function Create() {
   const [Flight , setFlight] = useState({
-    flightNumber : '', 
-    departureTime : '',
-    arrivalTime : '',
-    economySeats : '',
-    businessSeats : '' ,
+    flightNumber : 0, 
+    departureTime : 0,
+    arrivalTime : 0,
+    economySeats : 0,
+    businessSeats : 0 ,
     airport : '' ,
   })
 
   const CreateFlight = () => {
-      axios.post("http://localhost:5000//" , Flight).then( () =>{
-        window.location.reloaad(false);
+    console.log("ana 0");
+      axios.post("http://localhost:5000/flights" , Flight).then( () =>{
+        //window.location.reload(false);
+        console.log("ana 1");
       })
   }
 
