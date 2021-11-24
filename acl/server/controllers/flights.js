@@ -18,6 +18,16 @@ export const createFlight = async (req,res) => {
         res.status(409).json ({message : error.message});
     }
 }
+export const DeleteFlight = async (req,res) => {
+    const deletedflight = req.params.flightNumber;
+
+    try {
+     await (await flight.findByIdAndRemove(flightNumber)).exec();
+     res.send('successfully deleted');
+    } catch (error) {
+        
+    }
+}
 import user from "../models/user.js";
 
 export const getUser = async (req,res) => {

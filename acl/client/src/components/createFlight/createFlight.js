@@ -7,12 +7,12 @@ import axios from 'axios';
 
 export default function Create() {
   const [Flight , setFlight] = useState({
-    flightNumber : 0, 
-    departureTime : 1/1/2000,
-    arrivalTime : 1/1/2000,
-    economySeats : 0,
-    businessSeats : 0 ,
-    airport : "noairport" ,
+    flightNumber : '', 
+    departureTime : '',
+    arrivalTime : '',
+    economySeats : '',
+    businessSeats : '' ,
+    airport : '' ,
   })
 
   const CreateFlight = () => {

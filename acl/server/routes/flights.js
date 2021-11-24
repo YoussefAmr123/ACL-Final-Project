@@ -1,5 +1,5 @@
 import express from "express";
-import { getFlights ,createFlight} from "../controllers/flights.js";
+import { getFlights ,createFlight , DeleteFlight} from "../controllers/flights.js";
 import flight from "../models/flights.js";
 
 import { getUser , createUser } from "../controllers/flights.js";
@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.get('/',getFlights);
 router.post('/',createFlight);
+router.delete('/delete',DeleteFlight);
 
 router.get('/',getUser);
 router.post('/',createUser);
