@@ -19,11 +19,11 @@ export default function Create() {
   const classes = useStyles();
 
   const [Flight , setFlight] = useState({
-    flightNumber : '', 
-    departureTime : '',
-    arrivalTime : '',
-    economySeats : '',
-    businessSeats : '' ,
+    flightNumber : 0, 
+    departureTime : 0,
+    arrivalTime : 0,
+    economySeats : 0,
+    businessSeats : 0 ,
     airport : '' ,
   })
 
