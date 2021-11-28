@@ -1,11 +1,23 @@
 import * as React  from 'react';
 import {useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *':{
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
 export default function Create() {
+  const classes = useStyles();
+
   const [Flight , setFlight] = useState({
     flightNumber : '', 
     departureTime : '',
@@ -16,7 +28,7 @@ export default function Create() {
   })
 
   const CreateFlight = () => {
-      axios.post("http://localhost:5000//" , Flight).then( () =>{
+      axios.post('http://localhost:5000/flights/create' , Flight).then( () =>{
         window.location.reloaad(false);
       })
   }

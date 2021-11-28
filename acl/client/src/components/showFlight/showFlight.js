@@ -24,7 +24,7 @@ export default function ShowFlight() {
         })
     }
 
-    useEffect(()=> {axios.get("http://localhost:5000/Flight").then( (allFlights) =>{
+    useEffect(()=> {axios.get("http://localhost:5000/flights").then( (allFlights) =>{
         setFlightList(allFlights.data);
     })
 
