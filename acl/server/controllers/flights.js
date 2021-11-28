@@ -11,7 +11,7 @@ export const getFlights = async (req,res) => {
 }
 export const createFlight = async (req,res) => {
     const addedFlight = req.body;//get the new flight details
-    const newFlight = new flightdata(addedFlight);
+    const newFlight = new flight(addedFlight);
     try {
        await newFlight.save();
        res.status(201).json(newFlight);
